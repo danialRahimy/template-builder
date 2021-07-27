@@ -1,0 +1,26 @@
+{
+    "scripts": {
+        "buildDev": "webpack --mode=development --config=webpack.config-js.js && webpack --mode=development --config=webpack.config-css.js",
+        "buildProd": "webpack --mode=production --config=webpack.config-js.js && webpack --mode=production --config=webpack.config-css.js",
+        "makeDirectories": "mkdir src && cd src && mkdir scss && mkdir js && mkdir img && mkdir component && mkdir layout",
+        "createFileCssConfig": "echo @import \"~bootstrap\"; > src/scss/style.scss && echo import $ from 'jquery';\rimport 'bootstrap'; > src/js/scripts.js",
+        "createProject": "npm install && npm run makeDirectories && npm run createFileCssConfig"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.9.2",
+        "autoprefixer": "^9.0.0",
+        "bootstrap": "^5",
+        "breakpoint-sass": "^2.7.1",
+        "css-loader": "^6.2.0",
+        "cssnano": "^4.0.5",
+        "jquery": "^3.6.0",
+        "mini-css-extract-plugin": "^2.1.0",
+        "node-sass": "^6.0.1",
+        "postcss-loader": "^3.0.0",
+        "sass": "^1.36.0",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.2.1",
+        "webpack": "^5.46.0",
+        "webpack-cli": "^4"
+    }
+}

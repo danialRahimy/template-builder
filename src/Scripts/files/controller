@@ -1,0 +1,57 @@
+﻿<?php
+$blueColor = "\033[0;34m";
+$blackColor = "\033[0;30m";
+$whileColor = "\033[1;37m";
+$normalColor = "\033[0;39m";
+$redColor = "\033[0;31m";
+
+const MAKE_ID = 1;
+const MAKE_COMPONENT_ID = 1;
+
+function echoCommand($command)
+{
+    global $blueColor;
+    global $normalColor;
+
+    echo "$blueColor $command\n$normalColor";
+}
+
+echoCommand('1. make');
+
+$wrongComment = "$redColor wrong comment $normalColor";
+
+$command = readline();
+
+if ($command == MAKE_ID)
+    echoCommand('1. component');
+else
+    die($wrongComment);
+
+$command = readline();
+
+if ($command == MAKE_COMPONENT_ID)
+    echoCommand('enter your component name');
+
+$command = readline();
+
+if (!empty($command)){
+    $componentName = str_replace([' '], ['-'], $command);
+
+    if (!is_dir("src/components/$componentName/scss"))
+        mkdir("src/components/$componentName/scss", 0777, true);
+
+    file_put_contents("src/components/$componentName/scss/styles.scss", '');
+
+    if (!is_dir("src/components/$componentName/js"))
+        mkdir("src/components/$componentName/js", 0777, true);
+
+    file_put_contents("src/components/$componentName/js/scripts.js", '');
+
+    if (!is_dir("src/components/$componentName/parts"))
+        mkdir("src/components/$componentName/parts", 0777, true);
+
+    if (!is_dir("src/components/$componentName/img"))
+        mkdir("src/components/$componentName/img", 0777, true);
+
+    file_put_contents("src/components/$componentName/index.php", '');
+}
